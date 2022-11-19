@@ -285,7 +285,7 @@ local function printMonthCalendar(year, monthAlpha, monthNumber)
     if currentWday < 7 then currentLine = currentLine .. resetTags end
 
     if currentWday == 7 then
-      local line = align .. currentLine .. " "
+      local line = align .. currentLine .. generateFontTag() .. " "
       print(line)
       currentLine = ""
       currentLineColorTagCount = 0
