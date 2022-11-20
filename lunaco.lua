@@ -257,6 +257,12 @@ local function printMonthCalendar(year, monthAlpha, monthNumber)
     local customTags = ""
     local resetTags = ""
 
+    if (currentWday == 1 or currentWday == 7) and not OPTIONS['--no-format']
+      and OPTIONS['--weekend-color']:len() > 0 then
+      customTags = "${color #" .. OPTIONS['--weekend-color'] .. "}"
+      currentLineColorTagCount = currentLineColorTagCount + 1
+    end
+
     if d == today and not OPTIONS['--no-format'] then
       local boldStatus = ""
       if OPTIONS['--today-bold'] then boldStatus = ":bold" end
@@ -266,12 +272,6 @@ local function printMonthCalendar(year, monthAlpha, monthNumber)
         customTags = customTags .. "${color #" .. OPTIONS['--today-color'] .. "}"
         currentLineColorTagCount = currentLineColorTagCount + 1
       end
-    end
-
-    if (currentWday == 1 or currentWday == 7) and not OPTIONS['--no-format']
-      and OPTIONS['--weekend-color']:len() > 0 then
-      customTags = "${color #" .. OPTIONS['--weekend-color'] .. "}"
-      currentLineColorTagCount = currentLineColorTagCount + 1
     end
 
     if customTags:len() > 0 then
