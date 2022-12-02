@@ -296,7 +296,7 @@ local function printMonthCalendar(year, monthAlpha, monthNumber)
       for v=1,(7-currentWday)*3 do
         padding = padding .. " "
       end
-      print(align .. currentLine .. padding)
+      print(align .. currentLine .. padding .. "${color}")
     end
   end
 end
